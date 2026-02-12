@@ -28,7 +28,8 @@ const projects = [
       "Decreased program crashes related to segmentation faults by 80% through safe pointer handling practices.",
       "Optimized runtime memory utilization by implementing dynamic memory allocation, reducing memory wastage by approximately 25–30% compared to static allocation.",
     ],
-    linkLabel: "Link",
+    linkLabel: "GitHub",
+    linkUrl: "https://github.com/khushichaudhary9983/Dynamic-Memory-Allocation",
   },
 ]
 
@@ -148,10 +149,41 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-950 via-slate-900 to-purple-950 text-slate-100">
+    <div className="relative min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-purple-950 text-slate-100 overflow-x-hidden">
+      {/* Animated Background Orbs */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          animate={{
+            x: [0, 100, 0],
+            y: [0, -100, 0],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          className="absolute top-0 right-1/4 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            x: [0, -100, 0],
+            y: [0, 100, 0],
+            scale: [1, 1.3, 1],
+          }}
+          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+          className="absolute bottom-0 left-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            x: [0, -50, 0],
+            y: [0, -50, 0],
+            scale: [1, 1.1, 1],
+          }}
+          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+          className="absolute top-1/2 right-1/3 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl"
+        />
+      </div>
+      
       {/* Scroll Progress Bar */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 z-[100] origin-left"
+        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-400 via-indigo-500 to-purple-600 z-[100] origin-left shadow-lg shadow-indigo-500/50"
         style={{ scaleX }}
       />
       
@@ -165,14 +197,14 @@ export default function Home() {
         transition={{ duration: 0.5 }}
         className="fixed top-4 left-1/2 z-50 -translate-x-1/2 w-[95vw] sm:w-auto sm:max-w-[95vw]"
       >
-        <div className="flex items-center justify-center gap-0.5 overflow-x-auto rounded-2xl border-2 border-indigo-500/40 bg-gradient-to-r from-slate-900/95 via-indigo-900/90 to-slate-900/95 px-1.5 py-1.5 shadow-2xl backdrop-blur-xl sm:gap-1 sm:px-3 sm:py-2 scrollbar-hide">
+        <div className="flex items-center justify-center gap-0.5 overflow-x-auto rounded-2xl border-2 border-indigo-400/50 bg-gradient-to-r from-slate-900/90 via-indigo-900/80 to-slate-900/90 px-1.5 py-1.5 shadow-2xl shadow-indigo-500/30 backdrop-blur-2xl sm:gap-1 sm:px-3 sm:py-2 scrollbar-hide ring-1 ring-white/10">
           <a
             href="#about"
             onClick={(e) => handleNavClick(e, "about")}
             className={`group relative flex-shrink-0 rounded-xl p-2 sm:px-3 sm:py-2 text-xs font-semibold transition-all duration-300 ${
               activeSection === "about"
-                ? "bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-lg shadow-indigo-500/50"
-                : "text-slate-300 hover:bg-white/10 hover:text-white"
+                ? "bg-gradient-to-r from-cyan-500 via-indigo-500 to-purple-600 text-white shadow-lg shadow-indigo-500/60"
+                : "text-slate-300 hover:bg-white/10 hover:text-white hover:shadow-md"
             }`}
           >
             <span className="flex items-center gap-1">
@@ -187,8 +219,8 @@ export default function Home() {
             onClick={(e) => handleNavClick(e, "skills")}
             className={`group relative flex-shrink-0 rounded-xl p-2 sm:px-3 sm:py-2 text-xs font-semibold transition-all duration-300 ${
               activeSection === "skills"
-                ? "bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-lg shadow-indigo-500/50"
-                : "text-slate-300 hover:bg-white/10 hover:text-white"
+                ? "bg-gradient-to-r from-cyan-500 via-indigo-500 to-purple-600 text-white shadow-lg shadow-indigo-500/60"
+                : "text-slate-300 hover:bg-white/10 hover:text-white hover:shadow-md"
             }`}
           >
             <span className="flex items-center gap-1">
@@ -203,8 +235,8 @@ export default function Home() {
             onClick={(e) => handleNavClick(e, "projects")}
             className={`group relative flex-shrink-0 rounded-xl p-2 sm:px-3 sm:py-2 text-xs font-semibold transition-all duration-300 ${
               activeSection === "projects"
-                ? "bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-lg shadow-indigo-500/50"
-                : "text-slate-300 hover:bg-white/10 hover:text-white"
+                ? "bg-gradient-to-r from-cyan-500 via-indigo-500 to-purple-600 text-white shadow-lg shadow-indigo-500/60"
+                : "text-slate-300 hover:bg-white/10 hover:text-white hover:shadow-md"
             }`}
           >
             <span className="flex items-center gap-1">
@@ -219,8 +251,8 @@ export default function Home() {
             onClick={(e) => handleNavClick(e, "training")}
             className={`group relative flex-shrink-0 rounded-xl p-2 sm:px-3 sm:py-2 text-xs font-semibold transition-all duration-300 ${
               activeSection === "training"
-                ? "bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-lg shadow-indigo-500/50"
-                : "text-slate-300 hover:bg-white/10 hover:text-white"
+                ? "bg-gradient-to-r from-cyan-500 via-indigo-500 to-purple-600 text-white shadow-lg shadow-indigo-500/60"
+                : "text-slate-300 hover:bg-white/10 hover:text-white hover:shadow-md"
             }`}
           >
             <span className="flex items-center gap-1">
@@ -235,8 +267,8 @@ export default function Home() {
             onClick={(e) => handleNavClick(e, "certificates")}
             className={`group relative flex-shrink-0 rounded-xl p-2 sm:px-3 sm:py-2 text-xs font-semibold transition-all duration-300 ${
               activeSection === "certificates"
-                ? "bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-lg shadow-indigo-500/50"
-                : "text-slate-300 hover:bg-white/10 hover:text-white"
+                ? "bg-gradient-to-r from-cyan-500 via-indigo-500 to-purple-600 text-white shadow-lg shadow-indigo-500/60"
+                : "text-slate-300 hover:bg-white/10 hover:text-white hover:shadow-md"
             }`}
           >
             <span className="flex items-center gap-1">
@@ -251,8 +283,8 @@ export default function Home() {
             onClick={(e) => handleNavClick(e, "education")}
             className={`group relative flex-shrink-0 rounded-xl p-2 sm:px-3 sm:py-2 text-xs font-semibold transition-all duration-300 ${
               activeSection === "education"
-                ? "bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-lg shadow-indigo-500/50"
-                : "text-slate-300 hover:bg-white/10 hover:text-white"
+                ? "bg-gradient-to-r from-cyan-500 via-indigo-500 to-purple-600 text-white shadow-lg shadow-indigo-500/60"
+                : "text-slate-300 hover:bg-white/10 hover:text-white hover:shadow-md"
             }`}
           >
             <span className="flex items-center gap-1">
@@ -277,7 +309,7 @@ export default function Home() {
         whileTap={{ scale: 0.95 }}
         transition={{ duration: 0.3 }}
         onClick={scrollToTop}
-        className="fixed bottom-6 right-4 sm:bottom-8 sm:right-8 z-50 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 p-2.5 sm:p-3 shadow-2xl shadow-indigo-500/30 transition-all hover:shadow-xl hover:shadow-indigo-500/50"
+        className="fixed bottom-6 right-4 sm:bottom-8 sm:right-8 z-50 rounded-full bg-gradient-to-r from-cyan-500 via-indigo-500 to-purple-600 p-2.5 sm:p-3 shadow-2xl shadow-indigo-500/40 transition-all hover:shadow-xl hover:shadow-indigo-500/60 ring-2 ring-white/20"
         style={{ pointerEvents: showScrollTop ? 'auto' : 'none' }}
       >
         <svg className="h-5 w-5 sm:h-6 sm:w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -298,10 +330,10 @@ export default function Home() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="group relative flex min-h-[90vh] sm:min-h-screen items-center overflow-hidden rounded-2xl border border-indigo-500/20 bg-gradient-to-br from-slate-900/90 via-indigo-950/50 to-slate-900/90 p-4 shadow-2xl backdrop-blur-sm transition-all hover:shadow-indigo-500/10 sm:p-8 lg:p-12 lg:rounded-3xl"
+          className="group relative flex min-h-[90vh] sm:min-h-screen items-center overflow-hidden rounded-2xl border border-indigo-400/30 bg-gradient-to-br from-slate-900/80 via-indigo-950/60 to-purple-950/80 p-4 shadow-2xl shadow-indigo-500/20 backdrop-blur-md transition-all hover:shadow-indigo-500/30 sm:p-8 lg:p-12 lg:rounded-3xl ring-1 ring-white/5"
         >
-          <div className="absolute -right-12 -top-12 h-64 w-64 rounded-full bg-indigo-500/20 blur-3xl" />
-          <div className="absolute -bottom-12 -left-12 h-64 w-64 rounded-full bg-purple-500/20 blur-3xl" />
+          <div className="absolute -right-12 -top-12 h-96 w-96 rounded-full bg-gradient-to-br from-cyan-500/20 to-indigo-500/20 blur-3xl animate-pulse" />
+          <div className="absolute -bottom-12 -left-12 h-96 w-96 rounded-full bg-gradient-to-br from-purple-500/20 to-pink-500/20 blur-3xl animate-pulse" />
           <div className="relative w-full">
             <div className="grid gap-6 lg:grid-cols-[1fr_0.8fr] lg:gap-10">
             <motion.div
@@ -319,7 +351,7 @@ export default function Home() {
                 </Badge>
               </div>
               <div className="space-y-3">
-                <h1 className="bg-gradient-to-r from-white via-indigo-200 to-purple-200 bg-clip-text text-3xl font-bold tracking-tight text-transparent sm:text-4xl md:text-5xl lg:text-6xl">
+                <h1 className="bg-gradient-to-r from-white via-cyan-200 to-indigo-300 bg-clip-text text-3xl font-bold tracking-tight text-transparent sm:text-4xl md:text-5xl lg:text-6xl drop-shadow-2xl">
                   Khushi Kumari
                 </h1>
                 <p className="text-base leading-relaxed text-slate-300 sm:text-lg md:text-xl">
@@ -345,7 +377,7 @@ export default function Home() {
                   hidden: { opacity: 0, y: 20 },
                   visible: { opacity: 1, y: 0 }
                 }}>
-                  <Button asChild className="w-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-lg shadow-indigo-500/30 transition-all hover:scale-105 hover:shadow-xl hover:shadow-indigo-500/40 sm:w-auto">
+                  <Button asChild className="w-full bg-gradient-to-r from-cyan-500 via-indigo-500 to-purple-600 text-white shadow-lg shadow-indigo-500/40 transition-all hover:scale-105 hover:shadow-xl hover:shadow-indigo-500/60 sm:w-auto ring-2 ring-white/20">
                   <a
                     href="https://github.com/khushichaudhary9983"
                     target="_blank"
@@ -415,7 +447,7 @@ export default function Home() {
                   <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">Languages</p>
                   <div className="flex flex-wrap gap-2">
                     {skills.languages.map((skill) => (
-                      <Badge key={skill} variant="secondary" className="bg-blue-500/20 text-blue-200 border-blue-400/30">
+                      <Badge key={skill} variant="secondary" className="bg-gradient-to-r from-cyan-500/20 to-blue-500/20 text-cyan-100 border-cyan-400/40 shadow-md shadow-cyan-500/20 hover:scale-105 transition-transform">
                         {skill}
                       </Badge>
                     ))}
@@ -425,7 +457,7 @@ export default function Home() {
                   <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">Tools / Platforms</p>
                   <div className="flex flex-wrap gap-2">
                     {skills.tools.map((skill) => (
-                      <Badge key={skill} variant="secondary" className="bg-indigo-500/20 text-indigo-200 border-indigo-400/30">
+                      <Badge key={skill} variant="secondary" className="bg-gradient-to-r from-indigo-500/20 to-purple-500/20 text-indigo-100 border-indigo-400/40 shadow-md shadow-indigo-500/20 hover:scale-105 transition-transform">
                         {skill}
                       </Badge>
                     ))}
@@ -435,7 +467,7 @@ export default function Home() {
                   <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">Soft Skills</p>
                   <div className="flex flex-wrap gap-2">
                     {skills.soft.map((skill) => (
-                      <Badge key={skill} variant="outline" className="border-purple-400/30 text-purple-200">
+                      <Badge key={skill} variant="outline" className="border-purple-400/40 text-purple-100 bg-purple-500/10 shadow-sm shadow-purple-500/20 hover:scale-105 transition-transform">
                         {skill}
                       </Badge>
                     ))}
@@ -583,15 +615,30 @@ export default function Home() {
               <Card className="border-indigo-500/30 bg-gradient-to-br from-slate-900/90 via-indigo-950/30 to-slate-900/90 backdrop-blur-sm shadow-xl hover:shadow-2xl hover:shadow-indigo-500/20 transition-all group">
                 <CardHeader className="p-4 sm:p-6">
                   <div className="space-y-2">
-                    <div className="flex items-center gap-2">
-                      <div className="p-1.5 sm:p-2 rounded-lg bg-indigo-500/20 group-hover:bg-indigo-500/30 transition-colors">
-                        <svg className="h-4 w-4 sm:h-5 sm:w-5 text-indigo-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                        </svg>
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="flex items-center gap-2 flex-1">
+                        <div className="p-1.5 sm:p-2 rounded-lg bg-indigo-500/20 group-hover:bg-indigo-500/30 transition-colors">
+                          <svg className="h-4 w-4 sm:h-5 sm:w-5 text-indigo-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                          </svg>
+                        </div>
+                        <h3 className="text-base sm:text-xl font-bold text-white group-hover:text-indigo-300 transition-colors">
+                          {project.title}
+                        </h3>
                       </div>
-                      <h3 className="text-base sm:text-xl font-bold text-white group-hover:text-indigo-300 transition-colors">
-                        {project.title}
-                      </h3>
+                      {project.linkUrl && (
+                        <a
+                          href={project.linkUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-500/20 hover:bg-indigo-500/30 border border-indigo-400/30 text-indigo-300 text-xs font-semibold transition-all hover:scale-105"
+                        >
+                          <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
+                          </svg>
+                          <span className="hidden sm:inline">{project.linkLabel}</span>
+                        </a>
+                      )}
                     </div>
                     <p className="text-xs sm:text-sm text-slate-400 flex items-center gap-2">
                       <svg className="h-3.5 w-3.5 sm:h-4 sm:w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

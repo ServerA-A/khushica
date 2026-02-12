@@ -14,8 +14,7 @@ import { motion, useScroll, useSpring } from "framer-motion"
 import { useEffect, useState } from "react"
 
 const skills = {
-  languages: ["C++", "JavaScript", "C", "Python"],
-  frameworks: ["HTML", "CSS"],
+  languages: ["C++", "JavaScript", "C", "Python", "HTML", "CSS"],
   tools: ["MySQL", "AWS", "Oracle"],
   soft: ["Adaptability", "Communication Skills", "Team work"],
 }
@@ -35,23 +34,41 @@ const projects = [
 
 const trainings = [
   {
-    title: "Python Dynamics: From Algorithms to AI",
+    title: "Cloud Computing Fundamentals and AWS Services",
     date: "June–July 2025",
     details: [
-      "Developed a strong foundation in Python programming, focusing on algorithmic problem-solving, data structures, and computational thinking, while progressively applying these concepts to machine learning and artificial intelligence applications.",
-      "Objective of this course is to gain hands-on experience in building efficient, scalable solutions using Python libraries and frameworks.",
+      "Developed a strong foundation in cloud computing concepts, focusing on cloud architecture, deployment models, and service models (IaaS, PaaS, SaaS), while gaining hands-on experience with AWS core services.",
+      "Objective of this course is to gain practical experience in building and deploying scalable cloud solutions, managing cloud infrastructure, and implementing cloud security best practices.",
     ],
     linkLabel: "Link",
   },
 ]
 
 const certificates = [
-  "Build Generative AI Apps and Solutions with No-Code Tools (Dec 2025)",
-  "ChatGPT-4 Prompt Engineering: ChatGPT, Generative AI & LLM (Aug 2025)",
-  "Master Generative AI & Generative AI tools (ChatGPT & more) (Aug 2025)",
-  "Computational Theory: Language Principle & Finite Automata Theory (Aug 2025)",
-  "The Bits and Bytes of Computer Networking (Sep 2024)",
-  "Introduction to Hardware and Operating Systems (Sep 2024)",
+  {
+    name: "Build Generative AI Apps and Solutions with No-Code Tools (Dec 2025)",
+    pdfUrl: "/Build Generative AI Apps and Solutions with No-Code Tools.pdf"
+  },
+  {
+    name: "ChatGPT-4 Prompt Engineering: ChatGPT, Generative AI & LLM (Aug 2025)",
+    pdfUrl: "/ChatGPT-4 Prompt Engineering ChatGPT, Generative AI & LLM.pdf"
+  },
+  {
+    name: "Master Generative AI & Generative AI tools (ChatGPT & more) (Aug 2025)",
+    pdfUrl: "/Master Generative AI & Generative AI tools.pdf"
+  },
+  {
+    name: "Computational Theory: Language Principle & Finite Automata Theory (Aug 2025)",
+    pdfUrl: "/Computational Theory Language Principle & Finite Automata Theory.pdf"
+  },
+  {
+    name: "The Bits and Bytes of Computer Networking (Sep 2024)",
+    pdfUrl: "/Coursera Google.pdf"
+  },
+  {
+    name: "Introduction to Hardware and Operating Systems (Sep 2024)",
+    pdfUrl: "/Coursera IBM.pdf"
+  },
 ]
 
 const achievements = [
@@ -90,7 +107,7 @@ export default function Home() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["about", "aboutme", "skills", "projects", "achievements", "training", "certificates", "education"]
+      const sections = ["Home", "aboutme", "skills", "projects", "achievements", "training", "certificates", "education"]
       const scrollPosition = window.scrollY + 200
 
       setShowScrollTop(window.scrollY > 500)
@@ -146,96 +163,104 @@ export default function Home() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
-        className="fixed top-6 left-1/2 z-50 -translate-x-1/2 max-w-[95vw]"
+        className="fixed top-4 left-1/2 z-50 -translate-x-1/2 w-[95vw] sm:w-auto sm:max-w-[95vw]"
       >
-        <div className="flex items-center gap-1 overflow-x-auto rounded-full border border-indigo-500/30 bg-slate-900/90 px-3 py-2.5 shadow-2xl backdrop-blur-md sm:gap-2 sm:px-6 sm:py-3">
+        <div className="flex items-center justify-center gap-0.5 overflow-x-auto rounded-2xl border-2 border-indigo-500/40 bg-gradient-to-r from-slate-900/95 via-indigo-900/90 to-slate-900/95 px-1.5 py-1.5 shadow-2xl backdrop-blur-xl sm:gap-1 sm:px-3 sm:py-2 scrollbar-hide">
           <a
             href="#about"
             onClick={(e) => handleNavClick(e, "about")}
-            className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all sm:px-4 sm:py-2 sm:text-sm ${
+            className={`group relative flex-shrink-0 rounded-xl p-2 sm:px-3 sm:py-2 text-xs font-semibold transition-all duration-300 ${
               activeSection === "about"
-                ? "bg-indigo-500/30 text-white shadow-lg shadow-indigo-500/20"
-                : "text-slate-300 hover:bg-indigo-500/20 hover:text-white"
+                ? "bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-lg shadow-indigo-500/50"
+                : "text-slate-300 hover:bg-white/10 hover:text-white"
             }`}
           >
-            About
-          </a>
-          <a
-            href="#aboutme"
-            onClick={(e) => handleNavClick(e, "aboutme")}
-            className={`whitespace-nowrap rounded-full px-3 py-1.5 text-xs font-medium transition-all sm:px-4 sm:py-2 sm:text-sm ${
-              activeSection === "aboutme"
-                ? "bg-indigo-500/30 text-white shadow-lg shadow-indigo-500/20"
-                : "text-slate-300 hover:bg-indigo-500/20 hover:text-white"
-            }`}
-          >
-            About Me
+            <span className="flex items-center gap-1">
+              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+              </svg>
+              <span className="hidden sm:inline">Home</span>
+            </span>
           </a>
           <a
             href="#skills"
             onClick={(e) => handleNavClick(e, "skills")}
-            className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all sm:px-4 sm:py-2 sm:text-sm ${
+            className={`group relative flex-shrink-0 rounded-xl p-2 sm:px-3 sm:py-2 text-xs font-semibold transition-all duration-300 ${
               activeSection === "skills"
-                ? "bg-indigo-500/30 text-white shadow-lg shadow-indigo-500/20"
-                : "text-slate-300 hover:bg-indigo-500/20 hover:text-white"
+                ? "bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-lg shadow-indigo-500/50"
+                : "text-slate-300 hover:bg-white/10 hover:text-white"
             }`}
           >
-            Skills
+            <span className="flex items-center gap-1">
+              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+              </svg>
+              <span className="hidden sm:inline">Skills</span>
+            </span>
           </a>
           <a
             href="#projects"
             onClick={(e) => handleNavClick(e, "projects")}
-            className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all sm:px-4 sm:py-2 sm:text-sm ${
+            className={`group relative flex-shrink-0 rounded-xl p-2 sm:px-3 sm:py-2 text-xs font-semibold transition-all duration-300 ${
               activeSection === "projects"
-                ? "bg-indigo-500/30 text-white shadow-lg shadow-indigo-500/20"
-                : "text-slate-300 hover:bg-indigo-500/20 hover:text-white"
+                ? "bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-lg shadow-indigo-500/50"
+                : "text-slate-300 hover:bg-white/10 hover:text-white"
             }`}
           >
-            Projects
-          </a>
-          <a
-            href="#achievements"
-            onClick={(e) => handleNavClick(e, "achievements")}
-            className={`whitespace-nowrap rounded-full px-3 py-1.5 text-xs font-medium transition-all sm:px-4 sm:py-2 sm:text-sm ${
-              activeSection === "achievements"
-                ? "bg-indigo-500/30 text-white shadow-lg shadow-indigo-500/20"
-                : "text-slate-300 hover:bg-indigo-500/20 hover:text-white"
-            }`}
-          >
-            Achievements
+            <span className="flex items-center gap-1">
+              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+              </svg>
+              <span className="hidden sm:inline">Projects</span>
+            </span>
           </a>
           <a
             href="#training"
             onClick={(e) => handleNavClick(e, "training")}
-            className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all sm:px-4 sm:py-2 sm:text-sm ${
+            className={`group relative flex-shrink-0 rounded-xl p-2 sm:px-3 sm:py-2 text-xs font-semibold transition-all duration-300 ${
               activeSection === "training"
-                ? "bg-indigo-500/30 text-white shadow-lg shadow-indigo-500/20"
-                : "text-slate-300 hover:bg-indigo-500/20 hover:text-white"
+                ? "bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-lg shadow-indigo-500/50"
+                : "text-slate-300 hover:bg-white/10 hover:text-white"
             }`}
           >
-            Training
+            <span className="flex items-center gap-1">
+              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
+              <span className="hidden sm:inline">Training</span>
+            </span>
           </a>
           <a
             href="#certificates"
             onClick={(e) => handleNavClick(e, "certificates")}
-            className={`whitespace-nowrap rounded-full px-3 py-1.5 text-xs font-medium transition-all sm:px-4 sm:py-2 sm:text-sm ${
+            className={`group relative flex-shrink-0 rounded-xl p-2 sm:px-3 sm:py-2 text-xs font-semibold transition-all duration-300 ${
               activeSection === "certificates"
-                ? "bg-indigo-500/30 text-white shadow-lg shadow-indigo-500/20"
-                : "text-slate-300 hover:bg-indigo-500/20 hover:text-white"
+                ? "bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-lg shadow-indigo-500/50"
+                : "text-slate-300 hover:bg-white/10 hover:text-white"
             }`}
           >
-            Certificates
+            <span className="flex items-center gap-1">
+              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+              </svg>
+              <span className="hidden sm:inline">Certs</span>
+            </span>
           </a>
           <a
             href="#education"
             onClick={(e) => handleNavClick(e, "education")}
-            className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all sm:px-4 sm:py-2 sm:text-sm ${
+            className={`group relative flex-shrink-0 rounded-xl p-2 sm:px-3 sm:py-2 text-xs font-semibold transition-all duration-300 ${
               activeSection === "education"
-                ? "bg-indigo-500/30 text-white shadow-lg shadow-indigo-500/20"
-                : "text-slate-300 hover:bg-indigo-500/20 hover:text-white"
+                ? "bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-lg shadow-indigo-500/50"
+                : "text-slate-300 hover:bg-white/10 hover:text-white"
             }`}
           >
-            Education
+            <span className="flex items-center gap-1">
+              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
+              </svg>
+              <span className="hidden sm:inline">Education</span>
+            </span>
           </a>
         </div>
       </motion.nav>
@@ -252,10 +277,10 @@ export default function Home() {
         whileTap={{ scale: 0.95 }}
         transition={{ duration: 0.3 }}
         onClick={scrollToTop}
-        className="fixed bottom-8 right-8 z-50 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 p-3 shadow-2xl shadow-indigo-500/30 transition-all hover:shadow-xl hover:shadow-indigo-500/50"
+        className="fixed bottom-6 right-4 sm:bottom-8 sm:right-8 z-50 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 p-2.5 sm:p-3 shadow-2xl shadow-indigo-500/30 transition-all hover:shadow-xl hover:shadow-indigo-500/50"
         style={{ pointerEvents: showScrollTop ? 'auto' : 'none' }}
       >
-        <svg className="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="h-5 w-5 sm:h-6 sm:w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
         </svg>
       </motion.button>
@@ -264,7 +289,7 @@ export default function Home() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="relative mx-auto flex w-full max-w-7xl flex-col gap-8 px-4 pb-20 sm:px-6 lg:gap-10 lg:px-8"
+        className="relative mx-auto flex w-full max-w-7xl flex-col gap-6 px-3 pt-20 pb-20 sm:px-6 sm:pt-24 sm:gap-8 lg:gap-10 lg:px-8"
         style={{ scrollBehavior: "smooth" }}
       >
         <motion.section
@@ -273,7 +298,7 @@ export default function Home() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="group relative flex min-h-screen items-center overflow-hidden rounded-2xl border border-indigo-500/20 bg-gradient-to-br from-slate-900/90 via-indigo-950/50 to-slate-900/90 p-6 shadow-2xl backdrop-blur-sm transition-all hover:shadow-indigo-500/10 sm:p-10 lg:p-12 lg:rounded-3xl"
+          className="group relative flex min-h-[90vh] sm:min-h-screen items-center overflow-hidden rounded-2xl border border-indigo-500/20 bg-gradient-to-br from-slate-900/90 via-indigo-950/50 to-slate-900/90 p-4 shadow-2xl backdrop-blur-sm transition-all hover:shadow-indigo-500/10 sm:p-8 lg:p-12 lg:rounded-3xl"
         >
           <div className="absolute -right-12 -top-12 h-64 w-64 rounded-full bg-indigo-500/20 blur-3xl" />
           <div className="absolute -bottom-12 -left-12 h-64 w-64 rounded-full bg-purple-500/20 blur-3xl" />
@@ -294,10 +319,10 @@ export default function Home() {
                 </Badge>
               </div>
               <div className="space-y-3">
-                <h1 className="bg-gradient-to-r from-white via-indigo-200 to-purple-200 bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-5xl lg:text-6xl">
+                <h1 className="bg-gradient-to-r from-white via-indigo-200 to-purple-200 bg-clip-text text-3xl font-bold tracking-tight text-transparent sm:text-4xl md:text-5xl lg:text-6xl">
                   Khushi Kumari
                 </h1>
-                <p className="text-lg leading-relaxed text-slate-300 sm:text-xl">
+                <p className="text-base leading-relaxed text-slate-300 sm:text-lg md:text-xl">
                   Aspiring software engineer focused on clean code, strong
                   fundamentals, and building reliable, efficient solutions.
                 </p>
@@ -343,7 +368,7 @@ export default function Home() {
                     className="w-full border-indigo-400/30 bg-indigo-500/10 text-white transition-all hover:scale-105 hover:bg-indigo-500/20 shadow-lg sm:w-auto"
                   >
                   <a
-                    href="https://www.linkedin.com/in/khushi-chaudhary"
+                    href="https://www.linkedin.com/in/khushi-chaudhary-324a65289/"
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -391,16 +416,6 @@ export default function Home() {
                   <div className="flex flex-wrap gap-2">
                     {skills.languages.map((skill) => (
                       <Badge key={skill} variant="secondary" className="bg-blue-500/20 text-blue-200 border-blue-400/30">
-                        {skill}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
-                <div className="space-y-2.5">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">Frameworks</p>
-                  <div className="flex flex-wrap gap-2">
-                    {skills.frameworks.map((skill) => (
-                      <Badge key={skill} variant="secondary" className="bg-purple-500/20 text-purple-200 border-purple-400/30">
                         {skill}
                       </Badge>
                     ))}
@@ -473,7 +488,7 @@ export default function Home() {
                     What Drives Me
                   </h3>
                   <p className="text-sm leading-relaxed text-slate-300">
-                    I thrive on challenges that push me to learn and grow. Whether it's optimizing memory allocation, exploring AI and machine learning, or participating in hackathons, I'm constantly seeking opportunities to expand my skill set and contribute to meaningful projects. My goal is to bridge the gap between theoretical knowledge and real-world applications.
+                    I thrive on challenges that push me to learn and grow. Whether it's optimizing memory allocation, exploring cloud computing and distributed systems, or participating in hackathons, I'm constantly seeking opportunities to expand my skill set and contribute to meaningful projects. My goal is to bridge the gap between theoretical knowledge and real-world cloud applications.
                   </p>
                 </div>
 
@@ -496,7 +511,7 @@ export default function Home() {
                     <div className="flex items-start gap-2">
                       <div className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-purple-400" />
                       <p className="text-sm leading-relaxed text-slate-300">
-                        Exploring <span className="font-semibold text-purple-300">AI/ML applications</span> with Python and modern frameworks
+                        Exploring <span className="font-semibold text-purple-300">Cloud Computing platforms</span> like AWS, Azure, and cloud-native technologies
                       </p>
                     </div>
                     <div className="flex items-start gap-2">
@@ -549,56 +564,105 @@ export default function Home() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="space-y-6"
+          className="space-y-4 sm:space-y-6"
         >
-          <Card className="border-indigo-500/20 bg-slate-900/70 backdrop-blur-sm shadow-xl transition-all hover:scale-[1.01] hover:shadow-indigo-500/10">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-white">Projects</CardTitle>
-              <CardDescription className="text-slate-400">
-                Selected academic and technical work
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              {projects.map((project, idx) => (
-                <div key={project.title} className="space-y-3">
-                  <div className="flex flex-wrap items-start justify-between gap-3">
-                    <div className="space-y-1">
-                      <h3 className="text-lg font-semibold text-white">
+          <div className="mb-2 sm:mb-4">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-1 sm:mb-2">Projects</h2>
+            <p className="text-sm sm:text-base text-slate-400">Selected academic and technical work</p>
+          </div>
+          {projects.map((project, idx) => (
+            <motion.div
+              key={project.title}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              whileHover={{ scale: 1.01 }}
+              whileTap={{ scale: 0.99 }}
+            >
+              <Card className="border-indigo-500/30 bg-gradient-to-br from-slate-900/90 via-indigo-950/30 to-slate-900/90 backdrop-blur-sm shadow-xl hover:shadow-2xl hover:shadow-indigo-500/20 transition-all group">
+                <CardHeader className="p-4 sm:p-6">
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2">
+                      <div className="p-1.5 sm:p-2 rounded-lg bg-indigo-500/20 group-hover:bg-indigo-500/30 transition-colors">
+                        <svg className="h-4 w-4 sm:h-5 sm:w-5 text-indigo-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                      </div>
+                      <h3 className="text-base sm:text-xl font-bold text-white group-hover:text-indigo-300 transition-colors">
                         {project.title}
                       </h3>
-                      <p className="text-sm text-slate-400">{project.date}</p>
                     </div>
-                    <Badge variant="outline" className="border-indigo-400/40 text-indigo-300 bg-indigo-500/10">
-                      {project.linkLabel}
-                    </Badge>
+                    <p className="text-xs sm:text-sm text-slate-400 flex items-center gap-2">
+                      <svg className="h-3.5 w-3.5 sm:h-4 sm:w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                      {project.date}
+                    </p>
                   </div>
-                  <ul className="space-y-2 pl-5 text-sm leading-relaxed text-slate-300">
-                    {project.highlights.map((item) => (
-                      <li key={item} className="list-disc">{item}</li>
+                </CardHeader>
+                <CardContent className="p-4 pt-0 sm:p-6 sm:pt-0">
+                  <div className="space-y-2 sm:space-y-3">
+                    {project.highlights.map((item, i) => (
+                      <div key={i} className="flex items-start gap-2 sm:gap-3 group/item">
+                        <div className="mt-1 p-0.5 sm:p-1 rounded-full bg-indigo-500/20 group-hover/item:bg-indigo-500/30 transition-colors flex-shrink-0">
+                          <svg className="h-2.5 w-2.5 sm:h-3 sm:w-3 text-indigo-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                          </svg>
+                        </div>
+                        <p className="text-xs sm:text-sm leading-relaxed text-slate-300">{item}</p>
+                      </div>
                     ))}
-                  </ul>
-                  {idx < projects.length - 1 && <Separator className="my-4 bg-white/10" />}
-                </div>
-              ))}
-            </CardContent>
-          </Card>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
 
-          <Card id="achievements" className="border-indigo-500/20 bg-slate-900/70 backdrop-blur-sm shadow-xl transition-all hover:scale-[1.01] hover:shadow-indigo-500/10">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-white">Achievements</CardTitle>
-              <CardDescription className="text-slate-400">
-                Competitions & recognition
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              {achievements.map((item) => (
-                <div key={item} className="flex items-start gap-3">
-                  <div className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-purple-400" />
-                  <p className="text-sm leading-relaxed text-slate-300">{item}</p>
+          <motion.div
+            id="achievements"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <Card className="border-purple-500/30 bg-gradient-to-br from-slate-900/90 via-purple-950/30 to-slate-900/90 backdrop-blur-sm shadow-xl hover:shadow-2xl hover:shadow-purple-500/20 transition-all">
+              <CardHeader className="p-4 sm:p-6">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <div className="p-1.5 sm:p-2 rounded-lg bg-purple-500/20">
+                    <svg className="h-5 w-5 sm:h-6 sm:w-6 text-purple-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <CardTitle className="text-xl sm:text-2xl font-bold text-white">Achievements</CardTitle>
+                    <CardDescription className="text-xs sm:text-sm text-slate-400">
+                      Competitions & recognition
+                    </CardDescription>
+                  </div>
                 </div>
-              ))}
-            </CardContent>
-          </Card>
+              </CardHeader>
+              <CardContent className="p-4 pt-0 sm:p-6 sm:pt-0 space-y-3 sm:space-y-4">
+                {achievements.map((item, idx) => (
+                  <motion.div
+                    key={item}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3, delay: idx * 0.1 }}
+                    className="flex items-start gap-2 sm:gap-3 p-2 sm:p-3 rounded-lg bg-purple-500/5 hover:bg-purple-500/10 transition-colors group"
+                  >
+                    <div className="p-1.5 rounded-full bg-purple-500/20 group-hover:bg-purple-500/30 transition-colors">
+                      <svg className="h-4 w-4 text-purple-300" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                    </div>
+                    <p className="text-xs sm:text-sm leading-relaxed text-slate-300 flex-1">{item}</p>
+                  </motion.div>
+                ))}
+              </CardContent>
+            </Card>
+          </motion.div>
         </motion.section>
 
         <motion.section
@@ -607,30 +671,25 @@ export default function Home() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="space-y-6"
+          className="space-y-4 sm:space-y-6"
         >
-          <Card className="border-indigo-500/20 bg-slate-900/70 backdrop-blur-sm shadow-xl transition-all hover:scale-[1.01] hover:shadow-indigo-500/10">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-white">Training</CardTitle>
-              <CardDescription className="text-slate-400">
+          <Card className="border-indigo-500/20 bg-slate-900/70 backdrop-blur-sm shadow-xl transition-all hover:shadow-indigo-500/10">
+            <CardHeader className="p-4 sm:p-6">
+              <CardTitle className="text-xl sm:text-2xl font-bold text-white">Training</CardTitle>
+              <CardDescription className="text-xs sm:text-sm text-slate-400">
                 Structured learning and specialization
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-6">
+            <CardContent className="p-4 pt-0 sm:p-6 sm:pt-0 space-y-4 sm:space-y-6">
               {trainings.map((training) => (
-                <div key={training.title} className="space-y-3">
-                  <div className="flex flex-wrap items-start justify-between gap-3">
-                    <div className="space-y-1">
-                      <h3 className="text-lg font-semibold text-white">
-                        {training.title}
-                      </h3>
-                      <p className="text-sm text-slate-400">{training.date}</p>
-                    </div>
-                    <Badge variant="outline" className="border-purple-400/40 text-purple-300 bg-purple-500/10">
-                      {training.linkLabel}
-                    </Badge>
+                <div key={training.title} className="space-y-2 sm:space-y-3">
+                  <div className="space-y-1">
+                    <h3 className="text-base sm:text-lg font-semibold text-white">
+                      {training.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-slate-400">{training.date}</p>
                   </div>
-                  <ul className="space-y-2 pl-5 text-sm leading-relaxed text-slate-300">
+                  <ul className="space-y-1.5 sm:space-y-2 pl-4 sm:pl-5 text-xs sm:text-sm leading-relaxed text-slate-300">
                     {training.details.map((item) => (
                       <li key={item} className="list-disc">{item}</li>
                     ))}
@@ -640,27 +699,68 @@ export default function Home() {
             </CardContent>
           </Card>
 
-          <Card id="certificates" className="border-indigo-500/20 bg-slate-900/70 backdrop-blur-sm shadow-xl transition-all hover:scale-[1.01] hover:shadow-indigo-500/10">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-white">Certificates</CardTitle>
-              <CardDescription className="text-slate-400">
-                Verified credentials
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="flex flex-wrap gap-2">
-                {certificates.map((certificate) => (
-                  <Badge
-                    key={certificate}
-                    variant="secondary"
-                    className="bg-indigo-500/20 text-xs text-indigo-200 border border-indigo-400/30"
-                  >
-                    {certificate}
-                  </Badge>
-                ))}
+          <motion.div
+            id="certificates"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="space-y-3 sm:space-y-4"
+          >
+            <div className="flex items-center gap-2 sm:gap-3">
+              <div className="p-1.5 sm:p-2 rounded-lg bg-indigo-500/20">
+                <svg className="h-5 w-5 sm:h-6 sm:w-6 text-indigo-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
               </div>
-            </CardContent>
-          </Card>
+              <div>
+                <h2 className="text-xl sm:text-2xl font-bold text-white">Certificates</h2>
+                <p className="text-xs sm:text-sm text-slate-400">Verified credentials - Tap to view</p>
+              </div>
+            </div>
+            <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2">
+              {certificates.map((certificate, idx) => (
+                <motion.a
+                  key={certificate.name}
+                  href={certificate.pdfUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: idx * 0.1 }}
+                  whileHover={{ scale: 1.02, y: -3 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="block"
+                >
+                  <Card className="border-indigo-500/30 bg-gradient-to-br from-slate-900/90 to-indigo-950/40 backdrop-blur-sm shadow-lg hover:shadow-xl hover:shadow-indigo-500/30 transition-all cursor-pointer group h-full">
+                    <CardContent className="p-3 sm:p-4">
+                      <div className="flex items-start gap-3 sm:gap-4">
+                        <div className="p-2 sm:p-3 rounded-lg bg-indigo-500/20 group-hover:bg-indigo-500/30 transition-colors flex-shrink-0">
+                          <svg className="h-5 w-5 sm:h-6 sm:w-6 text-indigo-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                          </svg>
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <h3 className="text-xs sm:text-sm font-semibold text-white group-hover:text-indigo-300 transition-colors line-clamp-2">
+                            {certificate.name}
+                          </h3>
+                          <div className="flex items-center gap-2 mt-2">
+                            <Badge variant="outline" className="border-indigo-400/40 text-indigo-300 text-xs">
+                              View
+                            </Badge>
+                            <svg className="h-4 w-4 text-indigo-400 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.a>
+              ))}
+            </div>
+          </motion.div>
         </motion.section>
 
         <motion.section
@@ -670,29 +770,29 @@ export default function Home() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <Card className="border-indigo-500/20 bg-slate-900/70 backdrop-blur-sm shadow-xl transition-all hover:scale-[1.01] hover:shadow-indigo-500/10">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-white">Education</CardTitle>
-              <CardDescription className="text-slate-400">
+          <Card className="border-indigo-500/20 bg-slate-900/70 backdrop-blur-sm shadow-xl transition-all hover:shadow-indigo-500/10">
+            <CardHeader className="p-4 sm:p-6">
+              <CardTitle className="text-xl sm:text-2xl font-bold text-white">Education</CardTitle>
+              <CardDescription className="text-xs sm:text-sm text-slate-400">
                 Academic background and milestones
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-6">
+            <CardContent className="p-4 pt-0 sm:p-6 sm:pt-0 space-y-4 sm:space-y-6">
               {education.map((item, index) => (
                 <div key={item.school} className="space-y-2">
-                  <div className="flex flex-wrap items-start justify-between gap-3">
+                  <div className="flex flex-col sm:flex-row sm:flex-wrap items-start justify-between gap-2 sm:gap-3">
                     <div className="space-y-1 flex-1">
-                      <h3 className="text-base font-semibold text-white">
+                      <h3 className="text-sm sm:text-base font-semibold text-white">
                         {item.school}
                       </h3>
-                      <p className="text-sm leading-relaxed text-slate-300">{item.detail}</p>
+                      <p className="text-xs sm:text-sm leading-relaxed text-slate-300">{item.detail}</p>
                     </div>
-                    <Badge variant="outline" className="border-purple-400/30 text-purple-200">
+                    <Badge variant="outline" className="border-purple-400/30 text-purple-200 text-xs">
                       {item.date}
                     </Badge>
                   </div>
                   {index < education.length - 1 ? (
-                    <Separator className="bg-indigo-500/20" />
+                    <Separator className="bg-indigo-500/20 mt-3 sm:mt-4" />
                   ) : null}
                 </div>
               ))}
